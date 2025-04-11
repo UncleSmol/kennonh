@@ -1,0 +1,197 @@
+/* Documentation Component Styles */
+.documentation-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Hero Section */
+.documentation-hero {
+  position: relative;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--primary-red);
+  background-image: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+  color: var(--pure-white);
+  margin-bottom: var(--spacing-xl);
+}
+
+.documentation-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.documentation-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 var(--spacing-lg);
+}
+
+.documentation-hero h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-secondary);
+}
+
+.documentation-hero p {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+}
+
+/* Main content container */
+.documentation-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg) var(--spacing-2xl);
+}
+
+/* Documentation Section */
+.documentation-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  color: var(--primary-red);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  margin-bottom: var(--spacing-lg);
+  font-family: var(--font-secondary);
+}
+
+.section-icon {
+  margin-right: var(--spacing-sm);
+  font-size: 1.2em;
+}
+
+.document-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Document Card */
+.document-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--pure-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.document-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.document-icon {
+  font-size: 2rem;
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(230, 57, 70, 0.1);
+  border-radius: 50%;
+}
+
+.document-info {
+  flex-grow: 1;
+}
+
+.document-info h3 {
+  color: var(--rich-black);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.document-subtitle {
+  color: var(--primary-red);
+  font-size: var(--text-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.document-description {
+  color: var(--rich-black);
+  font-size: var(--text-base);
+  margin-bottom: var(--spacing-md);
+}
+
+.document-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--off-white);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius-md);
+  color: var(--rich-black);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.document-action:hover {
+  background-color: var(--primary-red);
+  color: var(--pure-white);
+  border-color: var(--primary-red);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .document-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .documentation-hero {
+    height: 200px;
+  }
+
+  .documentation-hero h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .documentation-hero p {
+    font-size: var(--text-base);
+  }
+
+  .document-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: var(--text-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .documentation-hero h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .document-card {
+    padding: var(--spacing-md);
+  }
+}

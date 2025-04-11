@@ -1,0 +1,241 @@
+/* Team Modal Styles */
+.team-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+}
+
+.modal-content {
+  position: relative;
+  background-color: var(--pure-white);
+  border-radius: var(--radius-md);
+  max-width: 900px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-lg);
+  z-index: 1001;
+}
+
+.modal-title {
+  color: var(--primary-red);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  text-align: center;
+  font-family: var(--font-secondary);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--rich-black);
+  color: var(--pure-white);
+  border: none;
+  cursor: pointer;
+  font-size: var(--text-xl);
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.modal-close-button:hover {
+  background-color: var(--primary-red);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.team-members {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* Team Member Card Styles */
+.team-member-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--off-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.member-image-container {
+  width: 100%;
+  height: 180px;
+  background-color: var(--off-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.member-image-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--pure-white);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-bold);
+}
+
+.member-info {
+  padding: var(--spacing-lg);
+}
+
+.member-info h3 {
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--rich-black);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-secondary);
+}
+
+.member-title {
+  color: var(--primary-red);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--spacing-md);
+}
+
+.member-details {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: var(--spacing-md);
+  text-align: left;
+}
+
+.member-details p {
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--text-sm);
+  color: var(--rich-black);
+  text-align: left;
+}
+
+.member-additional-info {
+  margin-top: var(--spacing-md);
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  padding-top: var(--spacing-md);
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-icon-small {
+  color: var(--primary-red);
+  font-size: 1rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.info-row p {
+  margin: 0;
+  text-align: left;
+}
+
+.member-description {
+  margin-top: var(--spacing-md);
+  font-style: italic;
+  padding-top: var(--spacing-md);
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .member-image-container {
+    height: 150px;
+  }
+  
+  .modal-content {
+    padding: var(--spacing-lg);
+    max-height: 90vh;
+  }
+  
+  .member-info h3 {
+    font-size: var(--text-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: var(--spacing-md);
+  }
+  
+  .modal-title {
+    font-size: var(--text-xl);
+  }
+  
+  .member-image-placeholder {
+    width: 100px;
+    height: 100px;
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Animation classes */
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}

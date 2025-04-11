@@ -1,0 +1,247 @@
+/* Header Styles optimized for GSAP animations */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Fixed height for GSAP to animate */
+  background-color: var(--pure-white);
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+  will-change: transform, height, background-color, box-shadow;
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* Contains the GSAP animations */
+  will-change: transform;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  will-change: transform;
+}
+
+.logo-text{
+  text-decoration: none;
+  font-style: normal;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-3xl);
+  color: var(--off-white);
+}
+
+a{
+  text-decoration: none;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: none;
+  overflow: hidden;
+}
+
+.desktop-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-nav li {
+  margin-left: var(--spacing-lg);
+  overflow: hidden; /* Contains the GSAP animations */
+  will-change: transform, opacity;
+}
+
+.desktop-nav a {
+  color: var(--off-white);
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-xl);
+  letter-spacing: 0.5px;
+  position: relative;
+  display: block;
+  padding: var(--spacing-xs) 0;
+  will-change: transform, color;
+  height: 100%;
+  
+}
+
+.desktop-nav a:hover {
+  color: var(--primary-red);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Navigation */
+.mobile-nav-container {
+  display: block;
+  position: relative;
+}
+
+/* Hamburger Button - Specifically designed for GSAP animations */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1002; /* Higher z-index than mobile-nav */
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--rich-black);
+  border-radius: var(--radius-full);
+  transform-origin: center;
+  will-change: transform, opacity, background-color;
+  transition: transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+              opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+  background-color: var(--primary-red);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+  background-color: var(--primary-red);
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Start off-screen for GSAP animation */
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: var(--pure-white);
+  box-shadow: var(--shadow-lg);
+  z-index: 1001; /* Lower than hamburger but higher than other content */
+  padding-top: 80px;
+  overflow-y: auto;
+  will-change: transform;
+}
+
+.mobile-nav.open {
+  right: 0;
+}
+
+.mobile-nav nav {
+  padding: var(--spacing-lg);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-nav li {
+  margin-bottom: var(--spacing-lg);
+  will-change: transform, opacity;
+}
+
+.mobile-nav a {
+  display: block;
+  color: var(--rich-black);
+  text-decoration: none;
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  will-change: transform, background-color, color, padding;
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              padding 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mobile-nav a:hover {
+  background-color: var(--off-white);
+  color: var(--primary-red);
+  padding-left: var(--spacing-lg);
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 768px) {
+  .mobile-nav-container {
+    display: none;
+  }
+  
+  .desktop-nav {
+    display: block;
+  }
+  
+  .header-container {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .desktop-nav a {
+    font-size: var(--text-base);
+  }
+  
+  .logo {
+    height: 48px;
+  }
+  
+  .header-container {
+    padding: 0 var(--spacing-2xl);
+  }
+}
+
+/* High Contrast Mode Adjustments */
+@media (prefers-contrast: high) {
+  .desktop-nav a {
+    text-decoration: underline;
+  }
+  
+  .mobile-nav a {
+    border: 1px solid transparent;
+  }
+  
+  .mobile-nav a:hover {
+    border-color: var(--primary-red);
+  }
+  
+  .hamburger span {
+    height: 4px;
+  }
+}
