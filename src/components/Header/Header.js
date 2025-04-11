@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { ReactComponent as Logo } from '../../sig/dev-doc-logo.svg';
 import './Header.css';
 
 const Header = () => {
@@ -13,6 +14,11 @@ const Header = () => {
   const navItemsRef = useRef([]);
   const hamburgerRef = useRef(null);
   const mobileNavRef = useRef(null);
+  const snapScanRef = useRef(null);
+  const footerLogoRef = useRef(null);
+  
+  // SnapScan URL
+  const snapScanUrl = "https://pos.snapscan.io/qr/2NVLQ-7p";
   
   // Initialize GSAP animations
   useEffect(() => {
@@ -35,11 +41,37 @@ const Header = () => {
       }
     );
     
+    gsap.fromTo(
+      snapScanRef.current,
+      { opacity: 0, y: -10 },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.4,
+        delay: 0.5,
+        ease: "power1.out" 
+      }
+    );
+    
+    if (menuOpen && footerLogoRef.current) {
+      gsap.fromTo(
+        footerLogoRef.current,
+        { opacity: 0, y: 20 },
+        { 
+          opacity: 0.6, 
+          y: 0, 
+          duration: 0.5,
+          delay: 0.8,
+          ease: "power1.out" 
+        }
+      );
+    }
+    
     // Header scroll animation (will be triggered by scroll event)
     gsap.set(headerRef.current, { 
       clearProps: "all" 
     });
-  }, []);
+  }, [menuOpen]);
   
   // Handle scroll effect for header
   useEffect(() => {
@@ -134,6 +166,18 @@ const Header = () => {
           </Link>
         </div>
         
+        {/* SnapScan Payment Link - Desktop */}
+        <div ref={snapScanRef} className="snapscan-container">
+          <a 
+            href={snapScanUrl} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="cta-button"
+          >
+            Pay with SnapScan
+          </a>
+        </div>
+        
         {/* Desktop Navigation */}
         <nav className="desktop-nav">
           <ul>
@@ -176,7 +220,29 @@ const Header = () => {
                 <li><Link to="/services" onClick={toggleMenu}>SERVICES</Link></li>
                 <li><Link to="/contact" onClick={toggleMenu}>CONTACT</Link></li>
                 <li><Link to="/documentation" onClick={toggleMenu}>DOCUMENTATION</Link></li>
+                {/* SnapScan Payment Link - Mobile - now matches other nav links style */}
+                <li>
+                  <a 
+                    href={snapScanUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    PAY WITH SNAPSCAN
+                  </a>
+                </li>
               </ul>
+              
+              {/* Footer Logo */}
+              <div className="mobile-nav-footer">
+                <a 
+                  href="https://unclesmol.github.io/dev-doc" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="footer-logo-link"
+                >
+                  <Logo ref={footerLogoRef} className="footer-logo" />
+                </a>
+              </div>
             </nav>
           </div>
         </div>

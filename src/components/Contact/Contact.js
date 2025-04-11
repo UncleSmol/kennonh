@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaClock, FaMapMarkedAlt, FaCheckCircle, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhoneAlt, FaWhatsapp, FaEnvelope, FaClock, FaMapMarkedAlt, FaCheckCircle, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -21,6 +21,7 @@ const Contact = () => {
   const formRef = useRef(null);
   const mapRef = useRef(null);
   const infoRef = useRef(null);
+  const recomedRef = useRef(null);
   
   // Contact information - Updated with Dr. Mohlahlo's correct information
   const phoneNumber = "0732719754";
@@ -28,7 +29,9 @@ const Contact = () => {
   const mapUrl = "https://maps.app.goo.gl/nsjVeRVHC7AGkQju5";
   const emailAddress = "appointments@kennonh.co.za";
   const address = "25 Bethal Street, Modelpark, Emalahleni"; // Updated address
-  const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14349.178270444861!2d29.212914274658205!3d-25.87656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eebc00ce7169853%3A0x7e761ac293d2241!2sWitbank%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1620164565214!5m2!1sen!2sus`;
+  const googleMapsEmbedUrl = `https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1794.9230741288854!2d29.2499057!3d-25.8745406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eea958cf37e5689%3A0x6a88a864d88ddbe1!2sMpark%20Kennonh%20Medical%20center.%20Dr%20MOHLAHLO!5e0!3m2!1sen!2sza!4v1744362303294!5m2!1sen!2sza`;
+  // RecoMed booking link for Dr. Mohlahlo
+  const recomedBookingUrl = "https://www.recomed.co.za/general-practitioner/emalahleni/kenny-mohlahlo/33177/41581/"; // Replace with actual RecoMed URL for Dr. Mohlahlo
   
   // Services list for dropdown - Updated based on general practitioner services
   const services = [
@@ -89,7 +92,7 @@ const Contact = () => {
     );
     
     gsap.fromTo(
-      [mapRef.current, infoRef.current],
+      [mapRef.current, infoRef.current, recomedRef.current],
       { opacity: 0, x: 30 },
       { opacity: 1, x: 0, duration: 0.8, delay: 0.4, stagger: 0.2, ease: "power2.out" }
     );
@@ -106,6 +109,25 @@ const Contact = () => {
       
       <div className="contact-container">
         <div className="contact-content">
+          {/* RecoMed Online Booking Section */}
+          <section ref={recomedRef} className="appointment-form-section">
+            <h2>Book Online</h2>
+            <div className="booking-card">
+              <div className="booking-info">
+                <h3>Quick Online Booking</h3>
+                <p>Book your appointment instantly with Dr. Mohlahlo's online booking platform</p>
+                <a 
+                  href={recomedBookingUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="cta-button"
+                >
+                  Book Now on RecoMed
+                </a>
+              </div>
+            </div>
+          </section>
+          
           {/* Appointment Form Section */}
           <section ref={formRef} className="appointment-form-section">
             <h2>Book an Appointment</h2>
