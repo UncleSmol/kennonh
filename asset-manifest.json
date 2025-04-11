@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/kennonh/static/css/main.cc0761fd.css",
+    "main.js": "/kennonh/static/js/main.564d2fcf.js",
+    "static/js/453.1b0343af.chunk.js": "/kennonh/static/js/453.1b0343af.chunk.js",
+    "index.html": "/kennonh/index.html",
+    "main.cc0761fd.css.map": "/kennonh/static/css/main.cc0761fd.css.map",
+    "main.564d2fcf.js.map": "/kennonh/static/js/main.564d2fcf.js.map",
+    "453.1b0343af.chunk.js.map": "/kennonh/static/js/453.1b0343af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc0761fd.css",
+    "static/js/main.564d2fcf.js"
+  ]
+}
